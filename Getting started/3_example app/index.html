@@ -316,9 +316,52 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Example app
+      </label>
+    
     <a href="./" title="Example app" class="md-nav__link md-nav__link--active">
       Example app
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-netdaemonapp-base-class" title="The NetDaemonApp base class" class="md-nav__link">
+    The NetDaemonApp base class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-initializeasync-function" title="The InitializeAsync function" class="md-nav__link">
+    The InitializeAsync function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-initializeasync-function_1" title="The InitializeAsync function" class="md-nav__link">
+    The InitializeAsync function
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -344,6 +387,36 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-netdaemonapp-base-class" title="The NetDaemonApp base class" class="md-nav__link">
+    The NetDaemonApp base class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-initializeasync-function" title="The InitializeAsync function" class="md-nav__link">
+    The InitializeAsync function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-initializeasync-function_1" title="The InitializeAsync function" class="md-nav__link">
+    The InitializeAsync function
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -389,9 +462,57 @@
 </pre></div>
 
 
-<blockquote>
-<p>Docs in progress, todo: explain the example app</p>
-</blockquote>
+<h2 id="the-netdaemonapp-base-class">The NetDaemonApp base class</h2>
+<div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleApp</span> <span class="p">:</span> <span class="n">NetDaemonApp</span>
+</pre></div>
+
+
+<p>All applications in netdaemon have to inherit the NetDaemonApp base class. This provides discoverability and functionality to the application.</p>
+<h2 id="the-initializeasync-function">The InitializeAsync function</h2>
+<div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">InitializeAsync</span><span class="p">()</span>
+</pre></div>
+
+
+<p>This async function is called by the daemon and it´s purpose is to do all the initialization of your application. <strong>Never block this function!</strong> Typically you configure what should happen when a state change or run a function every minute for an example.</p>
+<h2 id="the-initializeasync-function_1">The InitializeAsync function</h2>
+<div class="codehilite"><pre><span></span><span class="n">Entity</span><span class="p">(</span><span class="s">&quot;binary_sensor.kitchen_pir&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">WhenStateChange</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s">&quot;on&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">UseEntity</span><span class="p">(</span><span class="s">&quot;light.kitchen_light&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">TurnOn</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entity</td>
+<td>Selects one or more entities where actions are applied</td>
+</tr>
+<tr>
+<td>WhenStateChange</td>
+<td>If state changes on previously defined entity do action</td>
+</tr>
+<tr>
+<td>UseEntity</td>
+<td>Entity to apply action on</td>
+</tr>
+<tr>
+<td>TurnOn</td>
+<td>The action on previously selected entity/ies</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>Ends the api call. You cannot skip this function or the automation will not be activated!</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
