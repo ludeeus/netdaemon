@@ -359,6 +359,39 @@
                 
                 
                 <h1 id="example-app">Example app</h1>
+<p>This application shows basic capabilities of the fluent API of NetDaemon.</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">JoySoftware.HomeAssistant.NetDaemon.Common</span><span class="p">;</span>
+
+<span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">///     Example app</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleApp</span> <span class="p">:</span> <span class="n">NetDaemonApp</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">InitializeAsync</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Entity</span><span class="p">(</span><span class="s">&quot;binary_sensor.kitchen_pir&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">WhenStateChange</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s">&quot;on&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">UseEntity</span><span class="p">(</span><span class="s">&quot;light.kitchen_light&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">TurnOn</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+
+        <span class="n">Entity</span><span class="p">(</span><span class="s">&quot;binary_sensor.kitchen_pir&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">WhenStateChange</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s">&quot;off&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">AndNotChangeFor</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="m">10</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">UseEntity</span><span class="p">(</span><span class="s">&quot;light.kitchen_light&quot;</span><span class="p">)</span>
+                    <span class="p">.</span><span class="n">TurnOff</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<blockquote>
+<p>Docs in progress, todo: explain the example app</p>
+</blockquote>
                 
                   
                 
