@@ -475,10 +475,11 @@
 
 <p>This async function is called by the daemon and it´s purpose is to do all the initialization of your application. <strong>Never block this function!</strong> Typically you configure what should happen when a state change or run a function every minute for an example.</p>
 <h2 id="the-initializeasync-function_1">The InitializeAsync function</h2>
-<div class="codehilite"><pre><span></span><span class="n">Entity</span><span class="p">(</span><span class="s">&quot;binary_sensor.kitchen_pir&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">WhenStateChange</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s">&quot;on&quot;</span><span class="p">)</span>
-            <span class="p">.</span><span class="n">UseEntity</span><span class="p">(</span><span class="s">&quot;light.kitchen_light&quot;</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">TurnOn</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span>    <span class="n">Entity</span><span class="p">(</span><span class="s">&quot;binary_sensor.kitchen_pir&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">WhenStateChange</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="s">&quot;off&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">AndNotChangeFor</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="m">10</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">UseEntity</span><span class="p">(</span><span class="s">&quot;light.kitchen_light&quot;</span><span class="p">)</span>
+                    <span class="p">.</span><span class="n">TurnOff</span><span class="p">()</span>
         <span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
 </pre></div>
 
@@ -500,11 +501,15 @@
 <td>If state changes on previously defined entity do action</td>
 </tr>
 <tr>
-<td>UseEntity</td>
-<td>Entity to apply action on</td>
+<td>AndNotChangeFor</td>
+<td>Do action only if state has not change for a period of time (10 minutes)</td>
 </tr>
 <tr>
-<td>TurnOn</td>
+<td>UseEntity</td>
+<td>The action on previously selected entity/ies</td>
+</tr>
+<tr>
+<td>TurnOff</td>
 <td>The action on previously selected entity/ies</td>
 </tr>
 <tr>
