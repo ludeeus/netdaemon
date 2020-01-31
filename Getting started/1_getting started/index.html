@@ -354,8 +354,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-default-content-to-your-configuration-folder-root" title="Add default content to your configuration folder root" class="md-nav__link">
-    Add default content to your configuration folder root
+  <a href="#download-the-development-environment" title="Download the development environment" class="md-nav__link">
+    Download the development environment
   </a>
   
 </li>
@@ -368,8 +368,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-out-the-examples-in-docs" title="Check out the examples in docs" class="md-nav__link">
-    Check out the examples in docs
+  <a href="#deploy-your-apps" title="Deploy your apps" class="md-nav__link">
+    Deploy your apps
   </a>
   
 </li>
@@ -377,6 +377,13 @@
         <li class="md-nav__item">
   <a href="#start-the-add-on" title="Start the add-on" class="md-nav__link">
     Start the add-on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-out-the-examples-in-docs" title="Check out the examples in docs" class="md-nav__link">
+    Check out the examples in docs
   </a>
   
 </li>
@@ -449,8 +456,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-default-content-to-your-configuration-folder-root" title="Add default content to your configuration folder root" class="md-nav__link">
-    Add default content to your configuration folder root
+  <a href="#download-the-development-environment" title="Download the development environment" class="md-nav__link">
+    Download the development environment
   </a>
   
 </li>
@@ -463,8 +470,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-out-the-examples-in-docs" title="Check out the examples in docs" class="md-nav__link">
-    Check out the examples in docs
+  <a href="#deploy-your-apps" title="Deploy your apps" class="md-nav__link">
+    Deploy your apps
   </a>
   
 </li>
@@ -472,6 +479,13 @@
         <li class="md-nav__item">
   <a href="#start-the-add-on" title="Start the add-on" class="md-nav__link">
     Start the add-on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-out-the-examples-in-docs" title="Check out the examples in docs" class="md-nav__link">
+    Check out the examples in docs
   </a>
   
 </li>
@@ -510,29 +524,27 @@
 <p>After you install it, do not start it just yet. We need to configure some stuff manually (will be improved as we come closer to release)</p>
 </li>
 </ol>
-<h2 id="add-default-content-to-your-configuration-folder-root">Add default content to your configuration folder root</h2>
-<p>Add the folder netdaemon to the config folder from the repo:</p>
-<p><a href="https://github.com/helto4real/hassio-add-ons/tree/master/netdaemon">https://github.com/helto4real/hassio-add-ons/tree/master/netdaemon</a></p>
-<p>The folder should contain following files and folder:</p>
+<h2 id="download-the-development-environment">Download the development environment</h2>
+<p>Development of apps is currently recommended doing locally. A vscode development devcontainer has been prepared for you at <a href="https://github.com/helto4real/hassio-add-ons/tree/master/netdaemon">https://github.com/helto4real/hassio-add-ons/tree/master/netdaemon</a>. Clone the folder netdaemon to your local maching. The folder should be containing the following files:</p>
 <p><img alt="" src="../img/netdaemonfolder.png" /></p>
 <h2 id="open-the-content-in-vscode">Open the content in vscode</h2>
 <ol>
-<li>
-<p>If you have not installed .NET Core 3.1 SDK on your PC do that now! <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">Link to download here</a></p>
-</li>
-<li>
-<p>Now when the root config has the <code>netdaemon</code> folder you can now open it with vscode. This work from the shared config drive if you use SMB share. Important that you open the folder where the cs.proj file is in the root.</p>
-</li>
+<li>Make sure you installed Remote Development extension in vscode</li>
+<li>Open the <code>netdaemon</code> folder and select open as container. Wait for the container to be created.</li>
+<li>Configure the config.json properly</li>
 <li>Open the vscode terminal and run <code>dotnet restore</code>, this needs to be done to get intellisense to work properly. Sometimes you need to restart vscode once for it to work.</li>
-<li>Hack away!</li>
+<li>Hack away! Run and debug your stuff! There are a few code snippets (ctrl+space) you can use. There will be more later.</li>
 </ol>
-<h2 id="check-out-the-examples-in-docs">Check out the examples in docs</h2>
-<p>Todo: make link to examples here</p>
+<h2 id="deploy-your-apps">Deploy your apps</h2>
+<p>After you have developed and tested you app you want to copy the whole app to the config folder. The new folder structure should be /config/netdaemon/apps where /config is the path to your Home Assistant config.</p>
 <h2 id="start-the-add-on">Start the add-on</h2>
 <p>Now you can start the plugin, check the logs for any errors.</p>
 <blockquote>
 <p><strong>IMPORTANT - YOU NEED TO RESTART THE ADD-ON EVERYTIME YOU MAKE CHANGES TO A FILE. THIS WILL CHANGE IN FUTURE RELEASES!</strong></p>
 </blockquote>
+<h2 id="check-out-the-examples-in-docs">Check out the examples in docs</h2>
+<p>Todo: make link to examples here..</p>
+<p>My own automations can be found at : <a href="https://github.com/helto4real/hassio/tree/master/netdaemon/apps">https://github.com/helto4real/hassio/tree/master/netdaemon/apps</a>.</p>
                 
                   
                 
