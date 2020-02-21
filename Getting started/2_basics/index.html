@@ -568,7 +568,7 @@
 <h2 id="async-model">Async model</h2>
 <p>NetDaemon is built on .NET and c# async model. It is important that you read up on async programming model. But here is some basics!</p>
 <h3 id="use-the-await-keyword">Use the await keyword</h3>
-<p>Whenever you see a function return a <code>Task</code> and mostly these functions has the prefix <code>Async</code>. Use the keyword <code>await</code> before calling. Example using the fluent API below:</p>
+<p>Whenever you see a function return a <code>Task</code> and mostly these functions has the postfix <code>Async</code>. Use the keyword <code>await</code> before calling. Example using the fluent API below:</p>
 <div class="codehilite"><pre><span></span><span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">MyAsyncFunctionDoingStuff</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">await</span> <span class="nf">MediaPlayer</span><span class="p">(</span><span class="s">&quot;media_player.cool_player&quot;</span><span class="p">)</span>
