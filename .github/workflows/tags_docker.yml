@@ -24,5 +24,6 @@ jobs:
             --platform linux/arm,linux/arm64,linux/amd64 \
             --output "type=image,push=true" \
             --file ./Dockerfile . \
+            --no-cache \
             --compress \
             --tag netdaemon/netdaemon:dev
